@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskMindAI – Automate Office Work with AI</title>
+  <meta name="description" content="AI automation for Excel cleanup, invoice extraction, and contract summaries. Built with FastAPI and PostgreSQL.">
+  <!-- Inline favicon so you don’t need extra files -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M18 42l7-20h5l7 20h-5l-1.3-4h-6.4L23 42h-5zm12-8l-2-6-2 6h4zm10-10h4v20h-4z' fill='white'/%3E%3C/svg%3E" />
+  <style>
+    :root { --bg:#0b0c10; --fg:#e5e7eb; --muted:#9ca3af; --btn:#2563eb; --card:#111216; --border:#1d1f24; }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--fg)}
+    .wrap{max-width:960px;margin:0 auto;padding:32px}
+    header{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:30px;height:30px;display:inline-block;background:#2563eb;border-radius:8px;position:relative}
+    .logo:after{content:"";position:absolute;inset:6px;background:white;clip-path:polygon(15% 85%,45% 15%,55% 15%,85% 85%,70% 85%,61% 66%,39% 66%,30% 85%)}
+    .wordmark{font-weight:700;letter-spacing:.3px}
+    nav a{color:#93c5fd;text-decoration:none;margin-left:14px}
+    .hero{padding:48px 0;text-align:center}
+    .hero h1{font-size:36px;margin:0 0 10px}
+    .hero p{color:var(--muted);margin:0 0 22px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn{background:var(--btn);color:white;padding:12px 18px;border-radius:10px;text-decoration:none}
+    .btn.secondary{background:transparent;border:1px solid var(--border)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:28px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+    h2{margin-top:40px;margin-bottom:8px}
+    .muted{color:var(--muted)}
+    footer{margin:40px 0;color:var(--muted);font-size:14px;text-align:center}
+    a{color:#93c5fd}
+    .note{font-size:12px;color:var(--muted);margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span class="wordmark">TaskMindAI</span>
+      </div>
+      <nav>
+        <a href="#apps">Apps</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Automate Boring Office Work with AI</h1>
+      <p>Clean Excel files and extract invoices in seconds. Fast to try, easy to adopt.</p>
+      <div class="btns">
+        <!-- Subdomains: live -->
+        <a class="btn" href="https://excelcleaner.taskmindai.net">Try Excel Cleaner</a>
+        <a class="btn" href="https://invoice.taskmindai.net">Try Invoice Extractor</a>
+        <!-- Contract app: add later (contract.taskmindai.net) -->
+      </div>
+      <p class="note">No signup needed for demos.</p>
+    </section>
+
+    <section id="apps">
+      <h2>What we automate</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Excel Cleaner</h3>
+          <p class="muted">Remove duplicates, fix types, normalize columns, and export clean CSVs.</p>
+          <p><a href="https://excelcleaner.taskmindai.net">Open App →</a></p>
+        </div>
+        <div class="card">
+          <h3>Invoice Extraction</h3>
+          <p class="muted">Turn PDF invoices into structured JSON/CSV ready for accounting.</p>
+          <p><a href="https://invoice.taskmindai.net">Open App →</a></p>
+        </div>
+        <div class="card">
+          <h3>Contract Summaries</h3>
+          <p class="muted">Clause highlights, risks, and TL;DR. <em>(Coming soon)</em></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:contact@taskmindai.net">contact@taskmindai.net</a></p>
+      <p>WhatsApp: <a href="https://wa.me/918009291672" target="_blank">+91-8009291672</a></p>
+
+      <!-- Swap this mailto with your Google Form URL when ready -->
+      <p>
+        <a class="btn secondary" href="mailto:contact@taskmindai.net?subject=Free%20Demo%20Request&body=Hi%20TaskMindAI%2C%20please%20run%20a%20free%20demo%20on%20the%20attached%20file%20or%20a%20shareable%20link%20to%20the%20file." target="_blank">
+          Send a sample file for a free demo
+        </a>
+      </p>
+      <p class="muted">Response within 24 hours. Setup from ₹10k, maintenance from ₹5k/month.</p>
+    </section>
+
+    <footer>© 2025 TaskMindAI · Built by Zaid Khan</footer>
+  </div>
+</body>
+</html>
