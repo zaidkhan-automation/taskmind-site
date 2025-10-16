@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>TaskMindAI — Offer One-Pager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="We automate your office work using AI: Excel Cleaner, Invoice Extractor, Contract Summaries. Free demo before payment." />
+
+  <!-- Screen styles (dark, sleek) -->
+  <style>
+    :root{
+      --bg:#0F172A; --panel:#0B1220; --ink:#E5E7EB; --muted:#94A3B8;
+      --brand:#22D3EE; --accent:#2563EB; --card:#0B0F1A; --border:#1E293B;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+    body{background:var(--bg);color:var(--ink);display:flex;justify-content:center}
+    .page{max-width:940px;width:100%;padding:28px 20px 48px}
+    .hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:34px;height:34px;border-radius:10px;background:var(--accent);position:relative;box-shadow:0 6px 18px rgba(37,99,235,.35)}
+    .logo:after{content:"";position:absolute;inset:7px;background:white;clip-path:polygon(14% 86%,46% 14%,54% 14%,86% 86%,71% 86%,62% 66%,38% 66%,29% 86%)}
+    .word{font-weight:800;letter-spacing:.3px}
+    .hdr .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--ink)}
+    .hero{background:linear-gradient(180deg,rgba(34,211,238,.12),transparent);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:18px}
+    h1{margin:0 0 4px;font-size:28px}
+    .tag{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:18px}
+    .card{grid-column:span 4;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .card h3{margin:0 0 6px;font-size:16px;color:var(--brand)}
+    p{margin:0 0 10px;color:var(--ink)}
+    .muted{color:var(--muted)}
+    table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left}
+    th{background:#122036}
+    .section{margin-top:22px}
+    .list li{margin:6px 0}
+    .foot{margin-top:24px;text-align:center;color:var(--muted);font-style:italic}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+    .k{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+    .k .n{font-weight:800;font-size:18px}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#122036;color:#BFE8FF;font-size:12px;border:1px solid var(--border)}
+    .hr{height:1px;background:var(--border);margin:18px 0}
+
+    /* responsive */
+    @media (max-width:800px){
+      .card{grid-column:span 12}
+      .kpis{grid-template-columns:1fr}
+    }
+
+    /* Print stylesheet: white page, A4-friendly, hides nav buttons */
+    @media print{
+      @page{size:A4;margin:15mm}
+      body{background:white;color:#111}
+      .page{padding:0;max-width:unset}
+      .hdr .cta,.pill{display:none !important}
+      .hero,.card,.k,.table-wrap{border:1px solid #E5E7EB;background:#fff}
+      .logo{box-shadow:none}
+      h1{color:#0B1220}
+      th{background:#F1F5F9;color:#0B1220;border-bottom:1px solid #E5E7EB}
+      td{color:#111;border-color:#E5E7EB}
+      .muted{color:#374151}
+      .btn{display:none !important}
+      a{color:#2563EB}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <div class="hdr">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span class="word">TaskMindAI</span>
+        <span class="pill">Offer</span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://taskmindai.net" target="_blank" rel="noopener">Website</a>
+        <a class="btn ghost" href="mailto:contact@taskmindai.net?subject=Free%20Demo%20Request&body=Hi%2C%20sharing%20a%20sample%20file%20for%20your%20AI%20automation%20demo.">Email us</a>
+        <a class="btn ghost" href="https://wa.me/918009291672" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="#" onclick="window.print()">Download PDF</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>Automate Your Office Work Using AI</h1>
+      <p class="tag">We turn repetitive manual work into smart automated systems. Free demo before payment.</p>
+      <div class="kpis">
+        <div class="k"><div class="n">90%</div><div class="muted">time saved</div></div>
+        <div class="k"><div class="n">10×</div><div class="muted">faster processing</div></div>
+        <div class="k"><div class="n">24 hrs</div><div class="muted">demo turnaround</div></div>
+      </div>
+    </div>
+
+    <!-- What we build -->
+    <div class="section">
+      <h2 style="margin:0 0 8px;color:var(--brand)">What We Build</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Excel Cleaner</h3>
+          <p class="muted">Automatically detects and cleans messy Excel data.</p>
+          <p>Save 3+ hours per file with zero formula errors.</p>
+          <p><a class="btn ghost" href="https://excelcleaner.taskmindai.net" target="_blank">Open demo →</a></p>
+        </div>
+        <div class="card">
+          <h3>Invoice Extractor</h3>
+          <p class="muted">Convert PDF invoices to structured JSON/CSV instantly.</p>
+          <p>10× faster bookkeeping, no manual typing.</p>
+          <p><a class="btn ghost" href="https://invoice.taskmindai.net" target="_blank">Open demo →</a></p>
+        </div>
+        <div class="card">
+          <h3>Contract Summarizer</h3>
+          <p class="muted">Clause highlights, risk flags, and TL;DR for quick review.</p>
+          <p>Review contracts in minutes, not hours.</p>
+          <p><span class="muted">Coming soon</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- Why choose -->
+    <div class="section">
+      <h2 style="margin:0 0 8px;color:var(--brand)">Why Teams Choose TaskMindAI</h2>
+      <ul class="list">
+        <li>Save <strong>90%</strong> of manual time across operations, accounts, and HR.</li>
+        <li><strong>Simple setup</strong> — works on your existing Excel and PDFs.</li>
+        <li><strong>Private & secure</strong> — data stays in your workspace.</li>
+        <li><strong>Free demo before payment</strong> — we prove it first.</li>
+      </ul>
+    </div>
+
+    <!-- Pricing -->
+    <div class="section">
+      <h2 style="margin:0 8px 8px 0;color:var(--brand)">Pricing (Transparent & Flexible)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Plan</th><th>Ideal For</th><th>One-time Setup</th><th>Monthly Support</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Starter</td><td>Small teams</td><td>₹10,000</td><td>₹5,000</td></tr>
+            <tr><td>Pro</td><td>Growing startups</td><td>₹15,000</td><td>₹10,000</td></tr>
+            <tr><td>Enterprise</td><td>Large orgs / continuous workflows</td><td>₹25,000</td><td>₹15,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:8px">Each solution is customized to your files and workflow. Free test run before payment.</p>
+    </div>
+
+    <!-- How it works -->
+    <div class="section">
+      <h2 style="margin:0 0 8px;color:var(--brand)">How It Works</h2>
+      <ol style="margin:0;padding-left:18px">
+        <li>You send a <strong>sample file or document</strong>.</li>
+        <li>We build a small <strong>AI automation demo</strong> for free.</li>
+        <li>You review → approve → we integrate & deploy.</li>
+      </ol>
+    </div>
+
+    <!-- Results -->
+    <div class="section">
+      <h2 style="margin:0 0 8px;color:var(--brand)">Client Results</h2>
+      <ul class="list">
+        <li><strong>Finance Team (Delhi):</strong> reduced invoice entry time from 4 hrs → 20 mins/day.</li>
+        <li><strong>HR Consultancy (Mumbai):</strong> cleaned 300+ Excel reports weekly with zero manual effort.</li>
+        <li><strong>Legal Firm (Pune):</strong> summarized 200+ NDAs → 70% faster client response time.</li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="section">
+      <h2 style="margin:0 0 8px;color:var(--brand)">Contact</h2>
+      <p>🌐 <a href="https://taskmindai.net" target="_blank" rel="noopener">taskmindai.net</a><br/>
+         📧 <a href="mailto:contact@taskmindai.net">contact@taskmindai.net</a><br/>
+         💬 <a href="https://wa.me/918009291672" target="_blank" rel="noopener">+91 8009291672</a></p>
+    </div>
+
+    <p class="foot">“Automate first. Think later.” — Zaid Khan, Founder</p>
+  </div>
+</body>
+</html>
