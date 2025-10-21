@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payment Successful – TaskMindAI</title>
+  <meta name="description" content="Thank you for your payment! Your TaskMindAI automation setup is now being processed.">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --fg: #e5e7eb;
+      --accent: #2563eb;
+      --muted: #9ca3af;
+      --card: #111216;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      padding: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid #1d1f24;
+      border-radius: 18px;
+      padding: 40px 32px;
+      max-width: 460px;
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+    }
+    .card h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .btn {
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    .logo {
+      width: 52px;
+      height: 52px;
+      background: var(--accent);
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .logo:after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      background: white;
+      clip-path: polygon(15% 85%,45% 15%,55% 15%,85% 85%,70% 85%,61% 66%,39% 66%,30% 85%);
+    }
+    footer {
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="logo"></span>
+    <h1>Payment Successful 🎉</h1>
+    <p>Thank you for your payment!  
+    Your TaskMindAI automation setup request has been received successfully.  
+    Our team will contact you within 24 hours to activate your account.</p>
+    <a href="https://taskmindai.net" class="btn">Return to Homepage</a>
+  </div>
+  <footer>© 2025 TaskMindAI · Built by Zaid Khan</footer>
+</body>
+</html>
