@@ -4,36 +4,130 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TaskMindAI – Automate Office Work with AI</title>
-  <meta name="description" content="AI automation for Excel cleanup, invoice extraction, and contract summaries. Built with FastAPI and PostgreSQL.">
-  <!-- Inline favicon so you don’t need extra files -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Cpath d='M18 42l7-20h5l7 20h-5l-1.3-4h-6.4L23 42h-5zm12-8l-2-6-2 6h4zm10-10h4v20h-4z' fill='white'/%3E%3C/svg%3E" />
+  <meta name="description" content="AI automation for Excel cleanup and invoice extraction. Built with FastAPI and PostgreSQL.">
+
+  <!-- Favicon (inline) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231B4DFF'/%3E%3Cpath d='M18 42l7-20h5l7 20h-5l-1.3-4h-6.4L23 42h-5zm12-8l-2-6-2 6h4zm10-10h4v20h-4z' fill='white'/%3E%3C/svg%3E" />
+
   <style>
-    :root { --bg:#0b0c10; --fg:#e5e7eb; --muted:#9ca3af; --btn:#2563eb; --card:#111216; --border:#1d1f24; }
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--fg)}
-    .wrap{max-width:960px;margin:0 auto;padding:32px}
-    header{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-    .brand{display:flex;gap:10px;align-items:center}
-    .logo{width:30px;height:30px;display:inline-block;background:#2563eb;border-radius:8px;position:relative}
-    .logo:after{content:"";position:absolute;inset:6px;background:white;clip-path:polygon(15% 85%,45% 15%,55% 15%,85% 85%,70% 85%,61% 66%,39% 66%,30% 85%)}
-    .wordmark{font-weight:700;letter-spacing:.3px}
-    nav a{color:#93c5fd;text-decoration:none;margin-left:14px}
-    .hero{padding:48px 0;text-align:center}
-    .hero h1{font-size:36px;margin:0 0 10px}
-    .hero p{color:var(--muted);margin:0 0 22px}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn{background:var(--btn);color:white;padding:12px 18px;border-radius:10px;text-decoration:none}
-    .btn.secondary{background:transparent;border:1px solid var(--border)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:28px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
-    h2{margin-top:40px;margin-bottom:8px}
+    :root{
+      --bg:#07090e;
+      --bg-2:#0a0d16;
+      --fg:#e6e9f2;
+      --muted:#a5adc3;
+      --primary:#5b8cff;
+      --primary-2:#8aa4ff;
+      --card:#0c1020aa;
+      --border:#1b2340;
+      --glass: blur(10px) saturate(130%);
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+      color:var(--fg); background:
+        radial-gradient(1000px 600px at 10% -10%, #1b2b80 0%, transparent 60%),
+        radial-gradient(800px 500px at 110% 10%, #0a5bd1 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 60%);
+      background-attachment: fixed;
+    }
+
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:10px 0; position:sticky; top:0; z-index:1000; backdrop-filter:var(--glass);
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--primary),#224fff);position:relative;box-shadow:0 6px 18px rgba(34,79,255,.35)}
+    .logo:after{content:"";position:absolute;inset:7px;background:white;clip-path:polygon(15% 85%,45% 15%,55% 15%,85% 85%,70% 85%,61% 66%,39% 66%,30% 85%)}
+    .wordmark{font-weight:800;letter-spacing:.3px}
+
+    nav a{
+      color:#cdd6ff;text-decoration:none;margin-left:18px;font-weight:600;opacity:.85
+    }
+    nav a:hover{opacity:1;text-decoration:underline}
+
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;
+      padding:48px 0 20px;
+    }
+    @media (max-width:900px){ .hero{grid-template-columns:1fr} }
+
+    .hero-card{
+      background:var(--card); border:1px solid var(--border);
+      border-radius:calc(var(--radius) + 2px); padding:28px; box-shadow:var(--shadow);
+      backdrop-filter:var(--glass);
+      animation: floatIn .6s ease-out both;
+    }
+    .hero h1{font-size:40px;line-height:1.1;margin:0 0 10px}
+    .hero p{color:var(--muted);margin:0 0 18px;font-size:18px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}
+    .badge{font-size:12px;color:#dfe6ff;background:#17204a;border:1px solid #233166;padding:6px 10px;border-radius:999px}
+
+    .btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:white;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;
+      box-shadow:0 10px 20px rgba(91,140,255,.25); transform:translateY(0); transition:.2s;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(91,140,255,.35)}
+    .btn.secondary{
+      background:transparent;border:1px solid var(--border);color:#d6defb;box-shadow:none
+    }
+    .meta-note{font-size:12px;color:var(--muted);margin-top:6px}
+
+    .mock{
+      height:100%;min-height:260px;border-radius:18px;border:1px solid var(--border);
+      background:
+        radial-gradient(600px 200px at 20% 0%, rgba(255,255,255,.08), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      position:relative; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;
+    }
+    .mock svg{max-width:90%;opacity:.9}
+
+    h2{margin:40px 0 14px;font-size:26px}
     .muted{color:var(--muted)}
-    footer{margin:40px 0;color:var(--muted);font-size:14px;text-align:center}
-    a{color:#93c5fd}
-    .note{font-size:12px;color:var(--muted);margin-top:8px}
+
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px
+    }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+      padding:18px 18px 16px;box-shadow:var(--shadow);backdrop-filter:var(--glass);transition:.2s;
+    }
+    .card:hover{transform:translateY(-3px)}
+    .card h3{margin:0 0 6px}
+    .card p{margin:0 0 10px}
+    .card a{color:#b9c7ff;text-decoration:none;font-weight:700}
+
+    .contact{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:8px
+    }
+    @media (max-width:900px){ .contact{grid-template-columns:1fr} }
+
+    .contact .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);backdrop-filter:var(--glass)}
+    .list{margin:8px 0 0;padding:0;list-style:none}
+    .list li{margin:10px 0}
+    .list a{color:#cdd6ff;text-decoration:none}
+    .list a:hover{text-decoration:underline}
+
+    footer{margin:44px 0 20px;color:var(--muted);font-size:14px;text-align:center}
+
+    /* simple reveal on scroll */
+    .reveal{opacity:0;transform:translateY(10px);transition:.5s}
+    .reveal.show{opacity:1;transform:translateY(0)}
+
+    @keyframes floatIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
   <div class="wrap">
+
+    <!-- HEADER -->
     <header>
       <div class="brand">
         <span class="logo" aria-hidden="true"></span>
@@ -45,31 +139,66 @@
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
-      <h1>Automate Boring Office Work with AI</h1>
-      <p>Clean Excel files and extract invoices in seconds. Fast to try, easy to adopt.</p>
-      <div class="btns">
-        <!-- Subdomains: live -->
-        <a class="btn" href="https://excelcleaner.taskmindai.net">Try Excel Cleaner</a>
-        <a class="btn" href="https://invoice.taskmindai.net">Try Invoice Extractor</a>
-        <!-- Contract app: add later (contract.taskmindai.net) -->
+      <div class="hero-card">
+        <h1>Automate Boring Office Work with AI</h1>
+        <p>Clean Excel files and extract invoice data in seconds. Try the live demos below — no signup.</p>
+
+        <div class="badges">
+          <span class="badge">FastAPI</span>
+          <span class="badge">Python</span>
+          <span class="badge">PostgreSQL</span>
+          <span class="badge">Pandas</span>
+        </div>
+
+        <div class="btns">
+          <a class="btn" href="https://excelcleaner.taskmindai.net" target="_blank" rel="noopener">Try Excel Cleaner</a>
+          <a class="btn" href="https://invoice.taskmindai.net" target="_blank" rel="noopener">Try Invoice Extractor</a>
+          <a class="btn secondary" href="#contact">Talk to us</a>
+        </div>
+        <p class="meta-note">Response within 24 hours. Setup from ₹10k, maintenance from ₹5k/month.</p>
       </div>
-      <p class="note">No signup needed for demos.</p>
+
+      <!-- Decorative mock (lightweight SVG) -->
+      <div class="mock reveal" aria-hidden="true">
+        <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="660" height="380" rx="14" fill="#0f1430" stroke="#223060"/>
+          <rect x="40" y="60" width="620" height="60" rx="10" fill="#151b3f"/>
+          <rect x="60" y="78" width="160" height="24" rx="6" fill="#2a3c7a"/>
+          <rect x="40" y="140" width="620" height="220" rx="10" fill="#0f1430"/>
+          <!-- cells -->
+          <g fill="#1a2550">
+            <rect x="60" y="164" width="140" height="30" rx="6"/>
+            <rect x="220" y="164" width="140" height="30" rx="6"/>
+            <rect x="380" y="164" width="140" height="30" rx="6"/>
+            <rect x="540" y="164" width="100" height="30" rx="6"/>
+            <rect x="60" y="210" width="580" height="24" rx="6" fill="#20306b"/>
+            <rect x="60" y="246" width="580" height="24" rx="6" fill="#20306b"/>
+            <rect x="60" y="282" width="580" height="24" rx="6" fill="#20306b"/>
+          </g>
+        </svg>
+      </div>
     </section>
 
-    <section id="apps">
+    <!-- APPS -->
+    <section id="apps" class="reveal">
       <h2>What we automate</h2>
+      <p class="muted">Small, focused tools that remove repetitive work from your team.</p>
+
       <div class="grid">
         <div class="card">
           <h3>Excel Cleaner</h3>
           <p class="muted">Remove duplicates, fix types, normalize columns, and export clean CSVs.</p>
-          <p><a href="https://excelcleaner.taskmindai.net">Open App →</a></p>
+          <p><a href="https://excelcleaner.taskmindai.net" target="_blank" rel="noopener">Open App →</a></p>
         </div>
+
         <div class="card">
           <h3>Invoice Extraction</h3>
           <p class="muted">Turn PDF invoices into structured JSON/CSV ready for accounting.</p>
-          <p><a href="https://invoice.taskmindai.net">Open App →</a></p>
+          <p><a href="https://invoice.taskmindai.net" target="_blank" rel="noopener">Open App →</a></p>
         </div>
+
         <div class="card">
           <h3>Contract Summaries</h3>
           <p class="muted">Clause highlights, risks, and TL;DR. <em>(Coming soon)</em></p>
@@ -77,21 +206,47 @@
       </div>
     </section>
 
-    <section id="contact">
+    <!-- CONTACT -->
+    <section id="contact" class="reveal" style="margin-top:28px;">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:contact@taskmindai.net">contact@taskmindai.net</a></p>
-      <p>WhatsApp: <a href="https://wa.me/918009291672" target="_blank">+91-8009291672</a></p>
+      <div class="contact">
+        <div class="panel">
+          <ul class="list">
+            <li>Email: <a href="mailto:contact@taskmindai.net">contact@taskmindai.net</a></li>
+            <li>WhatsApp: <a href="https://wa.me/918009291672" target="_blank" rel="noopener">+91-8009291672</a></li>
+          </ul>
+          <p style="margin-top:14px">
+            <a class="btn secondary" href="mailto:contact@taskmindai.net?subject=Free%20Demo%20Request&body=Hi%20TaskMindAI%2C%20please%20run%20a%20free%20demo%20on%20the%20attached%20file%20or%20a%20shareable%20link%20to%20the%20file." target="_blank" rel="noopener">
+              Send a sample file for a free demo
+            </a>
+          </p>
+          <p class="meta-note">We reply within 24 hours.</p>
+        </div>
 
-      <!-- Swap this mailto with your Google Form URL when ready -->
-      <p>
-        <a class="btn secondary" href="mailto:contact@taskmindai.net?subject=Free%20Demo%20Request&body=Hi%20TaskMindAI%2C%20please%20run%20a%20free%20demo%20on%20the%20attached%20file%20or%20a%20shareable%20link%20to%20the%20file." target="_blank">
-          Send a sample file for a free demo
-        </a>
-      </p>
-      <p class="muted">Response within 24 hours. Setup from ₹10k, maintenance from ₹5k/month.</p>
+        <div class="panel">
+          <h3 style="margin-top:0">How it works</h3>
+          <ol style="margin:6px 0 0; padding-left:18px; color:var(--muted);">
+            <li>Share a sample file or a short Loom video.</li>
+            <li>We run a free demo on your data.</li>
+            <li>If it fits, we deploy a private version for your team.</li>
+          </ol>
+        </div>
+      </div>
     </section>
 
     <footer>© 2025 TaskMindAI · Built by Zaid Khan</footer>
   </div>
+
+  <script>
+    // Intersection reveal
+    const reveal = () => {
+      document.querySelectorAll('.reveal').forEach(el=>{
+        const r = el.getBoundingClientRect();
+        if(r.top < window.innerHeight - 80){ el.classList.add('show'); }
+      });
+    };
+    reveal();
+    document.addEventListener('scroll', reveal, {passive:true});
+  </script>
 </body>
 </html>
