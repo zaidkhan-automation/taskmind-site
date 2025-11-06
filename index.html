@@ -3,191 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TaskMindAI – Automate Boring Office Work with AI</title>
-  <meta name="description" content="AI automation for Excel cleanup, invoice extraction, resume screening, and contract summaries. Fast to try, easy to adopt.">
+  <title>TaskMindAI – Automate Work. Cut Costs. Ship Faster.</title>
+  <meta name="description" content="AI automations for SMEs: Excel cleanup, invoice extraction, resume screening, contract summaries. Outcome-focused, fast onboarding, optional self-hosting." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#07080c;
-      --bg-2:#0b0e14;
-      --text:#e9edf5;
-      --muted:#a6b0c3;
-      --brand:#4f8cff;
-      --brand-2:#7c6cff;
-      --card:#0f1320;
-      --stroke:#1a2133;
-      --ok:#16a34a;
-      --warn:#f59e0b;
-      --shadow: 0 10px 30px rgba(3,8,20,.35);
-      --radius:18px;
+      --bg:#07080c; --bg-2:#0b0e14; --text:#e9edf5; --muted:#a6b0c3;
+      --brand:#4f8cff; --brand-2:#7c6cff; --ok:#16a34a; --warn:#f59e0b;
+      --card:#0f1320; --stroke:#1a2133; --radius:18px; --shadow:0 10px 30px rgba(3,8,20,.35);
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1000px 600px at 10% -20%, #1a2140 0%, transparent 60%),
-        radial-gradient(900px 500px at 110% 10%, #1a2140 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      overflow-x:hidden;
-      scroll-behavior:smooth;
-    }
-
-    /* Subtle animated stars */
-    .sparkles:before,.sparkles:after{
-      content:"";
-      position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, #7aa2ff55 50%, transparent 60%),
-        radial-gradient(1.5px 1.5px at 70% 20%, #a58bff55 50%, transparent 60%),
-        radial-gradient(1.8px 1.8px at 40% 80%, #6bdcff55 50%, transparent 60%);
-      animation: twinkle 8s linear infinite;
-      opacity:.6;
-    }
-    .sparkles:after{ animation-duration:12s; filter:blur(.5px); opacity:.4 }
-    @keyframes twinkle { 0%{transform:translateY(0)} 50%{transform:translateY(-10px)} 100%{transform:translateY(0)} }
-
-    .wrap{max-width:1120px; margin:0 auto; padding:0 22px}
-
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter:saturate(160%) blur(10px);
-      background:linear-gradient(180deg, rgba(11,14,20,.9) 0%, rgba(11,14,20,.6) 100%);
-      border-bottom:1px solid var(--stroke);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; height:68px}
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text)}
-    .logo{
-      width:34px; height:34px; border-radius:10px; position:relative;
-      background:conic-gradient(from 210deg, var(--brand), var(--brand-2));
-      box-shadow:0 6px 18px #0007;
-    }
-    .logo:after{
-      content:""; position:absolute; inset:6px; border-radius:8px; background:#fff;
-      -webkit-mask: path("M7 22 L14 4 H18 L26 22 H22 L20.6 18 H13.4 L12 22 Z M18 14 L16 9 L14 14 Z M30 8 H34 V22 H30 Z") center / 90% 90% no-repeat;
-              mask: path("M7 22 L14 4 H18 L26 22 H22 L20.6 18 H13.4 L12 22 Z M18 14 L16 9 L14 14 Z M30 8 H34 V22 H30 Z") center / 90% 90% no-repeat;
-    }
-    nav a{
-      color:var(--muted); text-decoration:none; margin:0 10px; font-weight:600; font-size:14px;
-      transition:color .2s ease;
-    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--text);
+      background:radial-gradient(1000px 600px at 10% -20%, #1a2140 0%, transparent 60%),
+                 radial-gradient(900px 500px at 110% 10%, #1a2140 0%, transparent 55%),
+                 linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      overflow-x:hidden; scroll-behavior:smooth;}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+    header{position:sticky;top:0;z-index:20;backdrop-filter:saturate(160%) blur(10px);
+      background:linear-gradient(180deg, rgba(11,14,20,.9) 0%, rgba(11,14,20,.6) 100%);border-bottom:1px solid var(--stroke)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+    .logo{width:34px;height:34px;border-radius:10px;position:relative;background:conic-gradient(from 210deg, var(--brand), var(--brand-2));box-shadow:0 6px 18px #0007}
+    .logo:after{content:"";position:absolute;inset:6px;border-radius:8px;background:#fff;
+      -webkit-mask:path("M7 22 L14 4 H18 L26 22 H22 L20.6 18 H13.4 L12 22 Z M18 14 L16 9 L14 14 Z M30 8 H34 V22 H30 Z") center/90% 90% no-repeat;
+              mask:path("M7 22 L14 4 H18 L26 22 H22 L20.6 18 H13.4 L12 22 Z M18 14 L16 9 L14 14 Z M30 8 H34 V22 H30 Z") center/90% 90% no-repeat;}
+    nav a{color:var(--muted);text-decoration:none;margin:0 10px;font-weight:600;font-size:14px}
     nav a:hover{color:#cfe0ff}
-    .cta{
-      background:linear-gradient(135deg, var(--brand), var(--brand-2));
-      color:#fff; padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:700; box-shadow: var(--shadow);
-    }
-
-    /* Hero */
-    .hero{padding:74px 0 36px; position:relative}
-    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:26px; align-items:center}
-    .badge{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; color:#c8d5ff; background:#0e1322a6}
-    .badge i{width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 5px #16a34a20}
-    .title{font-size:44px; line-height:1.05; margin:14px 0 10px}
-    .lead{color:var(--muted); font-size:18px; margin:0 0 18px}
-    .btns{display:flex; gap:12px; flex-wrap:wrap}
-    .btn{
-      background:#12172a; color:#d7e1fb; padding:12px 16px; border-radius:12px; border:1px solid var(--stroke);
-      text-decoration:none; font-weight:700; transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
-    }
-    .btn:hover{transform:translateY(-2px); border-color:#2a3960; box-shadow:0 10px 24px #0006}
-    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff}
-    .hero-card{
-      border:1px solid var(--stroke); border-radius:var(--radius); padding:18px; background:linear-gradient(180deg,#0f1320 0%, #0b0e14 100%);
-      box-shadow: var(--shadow);
-    }
-    .stat{display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:12px}
-    .stat div{background:#0d1220; border:1px solid var(--stroke); border-radius:12px; padding:10px; text-align:center}
-    .stat b{display:block; font-size:18px}
-
-    /* Section titles */
-    h2{font-size:26px; margin:42px 0 12px}
-    .sub{color:var(--muted); margin-top:-6px}
-
-    /* Cards grid */
-    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px; margin-top:16px}
-    .card{
-      grid-column: span 6;
-      background:linear-gradient(180deg, #0f1320, #0e1220);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      padding:18px;
-      transition:transform .18s ease, border-color .2s ease, box-shadow .2s ease;
-      position:relative; overflow:hidden;
-    }
-    .card:hover{transform:translateY(-4px); border-color:#2a3960; box-shadow:0 12px 28px #0007}
+    .cta{background:linear-gradient(135deg, var(--brand), var(--brand-2));color:#fff;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
+    .hero{padding:74px 0 36px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--stroke);border-radius:999px;color:#c8d5ff;background:#0e1322a6}
+    .badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 5px #16a34a20}
+    .title{font-size:44px;line-height:1.05;margin:14px 0 10px}
+    .lead{color:var(--muted);font-size:18px;margin:0 0 18px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:#12172a;color:#d7e1fb;padding:12px 16px;border-radius:12px;border:1px solid var(--stroke);text-decoration:none;font-weight:700;transition:transform .15s ease,border-color .2s ease,box-shadow .2s ease}
+    .btn:hover{transform:translateY(-2px);border-color:#2a3960;box-shadow:0 10px 24px #0006}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+    .hero-card{border:1px solid var(--stroke);border-radius:var(--radius);padding:18px;background:linear-gradient(180deg,#0f1320 0%, #0b0e14 100%);box-shadow:var(--shadow)}
+    .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+    .stat div{background:#0d1220;border:1px solid var(--stroke);border-radius:12px;padding:10px;text-align:center}
+    .stat b{display:block;font-size:18px}
+    h2{font-size:26px;margin:42px 0 12px}
+    .sub{color:var(--muted);margin-top:-6px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:16px}
+    .card{grid-column:span 6;background:linear-gradient(180deg,#0f1320,#0e1220);border:1px solid var(--stroke);border-radius:var(--radius);padding:18px;transition:transform .18s ease,border-color .2s ease,box-shadow .2s ease;position:relative;overflow:hidden}
+    .card:hover{transform:translateY(-4px);border-color:#2a3960;box-shadow:0 12px 28px #0007}
     .card h3{margin:0 0 6px}
     .muted{color:var(--muted)}
-    .card a{color:#c6d9ff; text-decoration:none; font-weight:700}
-    .chip{
-      position:absolute; top:12px; right:12px; padding:6px 10px; font-size:12px; border-radius:999px;
-      border:1px solid var(--stroke); color:#cfceff; background:#0f1028aa
-    }
-
-    /* Contact */
-    .contact{
-      display:grid; grid-template-columns:1.1fr .9fr; gap:20px; align-items:center; margin-top:12px
-    }
-    .panel{
-      background:linear-gradient(180deg, #0f1320 0%, #0b0e14 100%);
-      border:1px solid var(--stroke); border-radius:var(--radius); padding:20px; box-shadow: var(--shadow)
-    }
-    .panel .row{display:flex; gap:10px; align-items:center; margin:10px 0}
-    .panel .row a{color:#c6d9ff; text-decoration:none; font-weight:600}
-    .ghost{
-      background:transparent; border:1px solid var(--stroke); padding:12px 16px; border-radius:12px; color:#dbe8ff; text-decoration:none; font-weight:700
-    }
-    .note{color:var(--muted); font-size:13px}
-
-    /* Footer */
-    footer{margin:48px 0 60px; text-align:center; color:var(--muted); font-size:14px}
-
-    /* Reveal on scroll */
-    .reveal{opacity:0; transform:translateY(16px); animation:reveal .6s ease forwards}
-    .reveal.d1{animation-delay:.1s}
-    .reveal.d2{animation-delay:.2s}
-    .reveal.d3{animation-delay:.3s}
-    @keyframes reveal{to{opacity:1; transform:none}}
-
-    /* Floating WhatsApp CTA */
-    .fab{
-      position:fixed; right:18px; bottom:18px; z-index:30;
-      background:#22c55e; color:#03130a; border:none;
-      width:54px; height:54px; border-radius:16px; display:grid; place-items:center;
-      box-shadow:0 14px 28px rgba(34,197,94,.45); text-decoration:none; font-weight:800
-    }
-    .fab:hover{transform:translateY(-2px)}
-
-    /* Back to top */
-    .top{position:fixed; right:18px; bottom:86px; opacity:.85}
-    .top a{display:grid; place-items:center; width:44px; height:44px; border-radius:12px; text-decoration:none;
-      background:#10162a; color:#cfe0ff; border:1px solid var(--stroke)}
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid, .contact{grid-template-columns:1fr}
-      .hero{padding-top:56px}
-      .title{font-size:36px}
-      .grid .card{grid-column:span 12}
-      nav .hide-mobile{display:none}
-    }
+    .card a{color:#c6d9ff;text-decoration:none;font-weight:700}
+    .chip{position:absolute;top:12px;right:12px;padding:6px 10px;font-size:12px;border-radius:999px;border:1px solid var(--stroke);color:#cfceff;background:#0f1028aa}
+    .panel{background:linear-gradient(180deg,#0f1320 0%,#0b0e14 100%);border:1px solid var(--stroke);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .panel .row{display:flex;gap:10px;align-items:center;margin:10px 0}
+    .panel .row a{color:#c6d9ff;text-decoration:none;font-weight:600}
+    .ghost{background:transparent;border:1px solid var(--stroke);padding:12px 16px;border-radius:12px;color:#dbe8ff;text-decoration:none;font-weight:700}
+    .note{color:var(--muted);font-size:13px}
+    .banner{margin-top:26px;border:1px dashed #2a3960;border-radius:16px;padding:14px 16px;background:#0e1427}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .kpis .k{background:#0d1220;border:1px solid var(--stroke);border-radius:14px;padding:14px;text-align:center}
+    .k b{font-size:20px;display:block}
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;margin-top:12px}
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    details{background:#0e1220;border:1px solid var(--stroke);border-radius:14px;padding:12px}
+    footer{margin:48px 0 60px;text-align:center;color:var(--muted);font-size:14px}
+    @media (max-width:980px){.hero-grid,.contact,.faq{grid-template-columns:1fr}.title{font-size:36px}.grid .card{grid-column:span 12}.kpis{grid-template-columns:1fr 1fr}}
   </style>
 </head>
-<body class="sparkles">
-  <a id="top"></a>
+<body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="TaskMindAI home">
-        <span class="logo" aria-hidden="true"></span>
-        <strong>TaskMindAI</strong>
-      </a>
+      <a class="brand" href="#top"><span class="logo" aria-hidden="true"></span><strong>TaskMindAI</strong></a>
       <nav>
         <a href="#apps" class="hide-mobile">Apps</a>
-        <a href="#why" class="hide-mobile">Why us</a>
+        <a href="#usecases" class="hide-mobile">Use-cases</a>
+        <a href="#proof" class="hide-mobile">Outcomes</a>
         <a href="#contact" class="hide-mobile">Contact</a>
         <a class="cta" href="#contact">Get Free Demo</a>
       </nav>
@@ -195,130 +85,184 @@
   </header>
 
   <main>
-    <section class="hero">
+    <!-- HERO -->
+    <section id="top" class="hero">
       <div class="wrap hero-grid">
-        <div class="reveal">
-          <span class="badge"><i></i> Live demos. No signup.</span>
-          <h1 class="title">Automate Boring Office Work with AI</h1>
-          <p class="lead">Clean Excel files, extract invoices, screen resumes, and summarize contracts in seconds. Fast to try, easy to adopt.</p>
+        <div>
+          <span class="badge"><i></i> Live demos. No signup. Optional self-hosting.</span>
+          <h1 class="title">Automate Work. <br>Cut Costs. <span style="color:#bcd3ff">Ship Faster.</span></h1>
+          <p class="lead">We build pragmatic AI automations for SMEs. Excel cleaned, invoices parsed, resumes screened, contracts summarized. No fluff. Just fewer hours wasted.</p>
           <div class="btns">
-            <a class="btn primary" href="https://excelcleaner.taskmindai.net">Try Excel Cleaner</a>
-            <a class="btn" href="https://invoice.taskmindai.net">Try Invoice Extractor</a>
-            <a class="btn" href="https://contract.taskmindai.net">Try Contract Summarizer</a>
-            <a class="btn" href="https://resumescreener.taskmindai.net">Try Resume Screener</a>
+            <a class="btn primary" href="#contact">Send a sample file → Free demo</a>
+            <a class="btn" href="#apps">Explore tools</a>
           </div>
-          <p class="note">Built with FastAPI + PostgreSQL. SME-friendly, enterprise-ready roadmap.</p>
+          <div class="banner">
+            <strong>What changes for you:</strong> 60–90% less manual data work, consistent outputs your auditor won’t hate, and a setup that your team actually adopts.
+          </div>
         </div>
-
-        <div class="hero-card reveal d1" aria-label="Performance snapshot">
-          <h3 style="margin:0 0 8px">What teams get</h3>
-          <ul class="muted" style="margin:0 0 10px; padding-left:18px; line-height:1.7">
-            <li>90% less manual Excel cleanup</li>
-            <li>One-click JSON/CSV from messy PDFs</li>
-            <li>Consistent outputs, audit-friendly</li>
+        <div class="hero-card" aria-label="Business snapshot">
+          <h3 style="margin:0 0 8px">Business value in plain English</h3>
+          <ul class="muted" style="margin:0 0 10px; padding-left:18px; line-height:1.75">
+            <li>Replace repetitive Excel cleanup with one button.</li>
+            <li>Turn messy PDFs into neat JSON/CSV your systems accept.</li>
+            <li>Score resumes and highlight risks in contracts faster.</li>
           </ul>
           <div class="stat">
-            <div><span class="muted">Setup from</span><b>₹10k</b></div>
-            <div><span class="muted">Maintenance</span><b>₹5k/mo</b></div>
-            <div><span class="muted">Demo</span><b>Free</b></div>
+            <div><span class="muted">Setup</span><b>from ₹10k</b></div>
+            <div><span class="muted">Maintenance</span><b>from ₹5k/mo</b></div>
+            <div><span class="muted">SLA/Uptime</span><b>99.5%*</b></div>
           </div>
+          <p class="note" style="margin-top:8px">*SLA available on paid hosting or self-hosted deployments.</p>
         </div>
       </div>
     </section>
 
+    <!-- WHAT WE AUTOMATE -->
     <section id="apps" class="wrap">
-      <h2 class="reveal">What we automate</h2>
-      <p class="sub reveal d1">Everything essential for data-heavy teams. Plug in, save hours.</p>
-
+      <h2>What we automate</h2>
+      <p class="sub">Outcome-focused tools your ops team will actually use.</p>
       <div class="grid">
-        <article class="card reveal">
+        <article class="card">
           <span class="chip">Most used</span>
           <h3>Excel Cleaner</h3>
           <p class="muted">Remove duplicates, fix types, normalize columns, and export clean CSVs.</p>
           <p><a href="https://excelcleaner.taskmindai.net">Open App →</a></p>
         </article>
-
-        <article class="card reveal d1">
+        <article class="card">
           <h3>Invoice Extraction</h3>
           <p class="muted">Turn PDF invoices into structured JSON/CSV ready for accounting.</p>
           <p><a href="https://invoice.taskmindai.net">Open App →</a></p>
         </article>
-
-        <article class="card reveal d2">
+        <article class="card">
+          <h3>Resume Screener</h3>
+          <p class="muted">Extract candidate data, match skills, rank candidates instantly.</p>
+          <p><a href="https://resumescreener.taskmindai.net">Open App →</a></p>
+        </article>
+        <article class="card">
           <h3>Contract Summaries</h3>
           <p class="muted">Clause highlights, risks, and TL;DR summaries. <em>(Coming soon)</em></p>
           <p><a href="https://contract.taskmindai.net">Open App →</a></p>
         </article>
-
-        <article class="card reveal d3">
-          <h3>Resume Screener</h3>
-          <p class="muted">Extract candidate data, match skills, and score resumes instantly.</p>
-          <p><a href="https://resumescreener.taskmindai.net">Open App →</a></p>
-        </article>
+      </div>
+      <div class="kpis" style="margin-top:16px">
+        <div class="k"><span class="muted">Manual hours saved</span><b>60–90%</b></div>
+        <div class="k"><span class="muted">Adoption time</span><b>~1 week</b></div>
+        <div class="k"><span class="muted">Export formats</span><b>CSV / JSON</b></div>
+        <div class="k"><span class="muted">Hosting</span><b>Cloud / Self-host</b></div>
       </div>
     </section>
 
-    <section id="why" class="wrap">
-      <h2 class="reveal">Why TaskMindAI</h2>
+    <!-- USE-CASES / INDUSTRIES -->
+    <section id="usecases" class="wrap">
+      <h2>Who we help</h2>
+      <p class="sub">If your team lives in spreadsheets and PDFs, we’re your people.</p>
       <div class="grid">
-        <div class="card reveal" style="grid-column:span 7">
-          <h3>Outcomes, not buzzwords</h3>
-          <p class="muted">We build automations that measurably reduce manual work. Your team keeps control; our tools do the boring bits.</p>
-          <ul class="muted" style="padding-left:18px; line-height:1.9">
-            <li>Fast adoption, zero lock-in</li>
-            <li>Transparent JSON/CSV outputs</li>
-            <li>Secure by design (self-host optional)</li>
+        <div class="card" style="grid-column:span 7">
+          <h3>Operations & Finance (SMEs)</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.8">
+            <li>Daily Excel cleanup for orders, SKUs, payouts, reconciliations</li>
+            <li>Invoice/CN/DN extraction for accounting systems</li>
+            <li>Vendor or store-wise dashboards generated automatically</li>
           </ul>
         </div>
-        <div class="card reveal d1" style="grid-column:span 5">
-          <h3>Simple pricing</h3>
-          <p class="muted">Start small, scale when you need.</p>
-          <div class="stat" style="grid-template-columns:1fr 1fr">
-            <div><span class="muted">Setup</span><b>from ₹10k</b></div>
-            <div><span class="muted">Maintenance</span><b>from ₹5k/mo</b></div>
-          </div>
-          <p class="note" style="margin-top:10px">Custom deployments and SLAs available on request.</p>
+        <div class="card" style="grid-column:span 5">
+          <h3>Hiring & Compliance</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.8">
+            <li>Resume parsing, skill matching, shortlists with reasons</li>
+            <li>Contract TL;DR with risk flags for quick reviews</li>
+          </ul>
+        </div>
+        <div class="card" style="grid-column:span 12">
+          <h3>Problems we kill quickly</h3>
+          <p class="muted">Duplicate rows, inconsistent date/amount formats, missing headers, mixed currencies, manual copy-paste from PDFs, hiring noise, clause hunting. If it’s boring and predictable, we automate it.</p>
         </div>
       </div>
     </section>
 
+    <!-- OUTCOMES / PROOF -->
+    <section id="proof" class="wrap">
+      <h2>Outcomes you can measure</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Before → After</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.8">
+            <li><strong>Before:</strong> 4–6 hours/day cleaning Excel. <strong>After:</strong> 10–15 minutes with review.</li>
+            <li><strong>Before:</strong> PDFs keyed into systems. <strong>After:</strong> CSV/JSON pushed via API.</li>
+            <li><strong>Before:</strong> CV sorting chaos. <strong>After:</strong> Ranked shortlist with reasons.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Light ROI math</h3>
+          <p class="muted">If your team spends 2 hours/day on cleanup at ₹600/hr, that’s ~₹24k/month. Our typical maintenance is from ₹5k/month. You keep the difference every month, plus fewer errors.</p>
+        </div>
+        <div class="card">
+          <h3>Delivery & Support</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.8">
+            <li>Free demo on your sample file</li>
+            <li>Go-live in ~1 week for standard workflows</li>
+            <li>99.5% uptime on managed hosting or your own server</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Security & Hosting</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.8">
+            <li>Self-host option: your data stays in your infra</li>
+            <li>Access control, audit-ready logs, schema-based outputs</li>
+            <li>Backups & rollback policies on managed plans</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS / PRICING -->
+    <section class="wrap" id="process">
+      <h2>How we work</h2>
+      <div class="grid">
+        <div class="card" style="grid-column:span 7">
+          <h3>3-step onboarding</h3>
+          <ol class="muted" style="padding-left:18px;line-height:1.9">
+            <li>Share a sample file or describe the repetitive task.</li>
+            <li>We run a free demo and return cleaned outputs or a working link.</li>
+            <li>We deploy, add your tweaks, and train your team.</li>
+          </ol>
+        </div>
+        <div class="card" style="grid-column:span 5">
+          <h3>Simple pricing</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.9">
+            <li><strong>Setup:</strong> from ₹10k (one-time)</li>
+            <li><strong>Maintenance:</strong> from ₹5k/month</li>
+            <li><strong>Enterprise:</strong> custom SLAs, SSO, on-prem</li>
+          </ul>
+          <p class="note">You only scale when the automation proves ROI. Fair is fair.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact" class="wrap">
-      <h2 class="reveal">Contact</h2>
+      <h2>Contact</h2>
       <div class="contact">
-        <div class="panel reveal">
+        <div class="panel">
           <div class="row"><strong>Email:</strong> <a href="mailto:contact@taskmindai.net">contact@taskmindai.net</a></div>
           <div class="row"><strong>WhatsApp:</strong> <a href="https://wa.me/918009291672" target="_blank">+91-8009291672</a></div>
           <div class="btns" style="margin-top:6px">
             <a class="ghost" href="mailto:contact@taskmindai.net?subject=Free%20Demo%20Request&body=Hi%20TaskMindAI%2C%20please%20run%20a%20free%20demo%20on%20the%20attached%20file%20or%20a%20shareable%20link%20to%20the%20file.">Send a sample file for a free demo</a>
             <a class="btn" href="#apps">See apps</a>
           </div>
-          <p class="note">Response within 24 hours. Setup from ₹10k, maintenance from ₹5k/month.</p>
+          <p class="note">Response within 24 hours. Setup from ₹10k, maintenance from ₹5k/month. Optional self-hosting with our support.</p>
         </div>
-
-        <div class="panel reveal d1">
-          <h3 style="margin-top:0">What happens after you message us?</h3>
-          <ol class="muted" style="line-height:1.8; padding-left:18px">
-            <li>Share sample file or requirements.</li>
-            <li>We run a free demo and return outputs.</li>
-            <li>If you like it, we set up your workflow.</li>
-          </ol>
-          <p class="note">Prefer self-hosting? We support that too.</p>
+        <div class="panel">
+          <h3 style="margin-top:0">Guarantees</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.85">
+            <li>Outputs match your schema or we fix it free.</li>
+            <li>No long contracts. Cancel maintenance anytime.</li>
+            <li>Your data is yours. We don’t resell or train on it.</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="wrap">© 2025 TaskMindAI · Built by Zaid Khan</footer>
-
-  <!-- Floating actions -->
-  <a class="top" href="#top" aria-label="Back to top"><span>⬆</span></a>
-  <a class="fab" href="https://wa.me/918009291672" target="_blank" aria-label="Chat on WhatsApp">✆</a>
-
-  <script>
-    // Lightweight intersection-based reveal (no external libs).
-    const els=[...document.querySelectorAll('.reveal')];
-    const io=new IntersectionObserver((e)=>{e.forEach(x=>x.isIntersecting && (x.target.style.animationPlayState='running'))},{threshold:.08});
-    els.forEach(el=>{el.style.animationPlayState='paused'; io.observe(el);});
-  </script>
 </body>
 </html>
